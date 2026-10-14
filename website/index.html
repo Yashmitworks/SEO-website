@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEOPulse — Crawl. Audit. Dominate.</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── Animated background ─────────────────────────────────────── -->
+  <div class="bg-grid"></div>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <!-- ── Navbar ──────────────────────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">SEO<strong>Pulse</strong></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#api">API</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="http://localhost:8000/docs" target="_blank" class="btn btn-ghost">API Docs</a>
+        <a href="dashboard.html" class="btn btn-primary">Launch Dashboard →</a>
+      </div>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Self-hosted · Open source · Production ready
+    </div>
+    <h1 class="hero-title">
+      SEO Auditing at<br/>
+      <span class="gradient-text">Enterprise Scale</span>
+    </h1>
+    <p class="hero-sub">
+      Crawl thousands of pages, audit every SEO tag, detect regressions in real-time.
+      Powered by Kafka, ClickHouse, and Playwright — fully self-hosted.
+    </p>
+    <div class="hero-cta">
+      <a href="dashboard.html" class="btn btn-primary btn-lg">
+        <span>Start Crawling</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="http://localhost:8000/docs" target="_blank" class="btn btn-outline btn-lg">
+        View API Docs
+      </a>
+    </div>
+
+    <!-- Live stats ticker -->
+    <div class="hero-stats">
+      <div class="stat-card" id="stat-status">
+        <div class="stat-dot" id="api-dot"></div>
+        <span class="stat-label">API Status</span>
+        <span class="stat-value" id="api-status-text">Checking...</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Audit Rules</span>
+        <span class="stat-value">12</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Max Pages/Crawl</span>
+        <span class="stat-value">500</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Real-time</span>
+        <span class="stat-value">WebSocket</span>
+      </div>
+    </div>
+
+    <!-- Code preview -->
+    <div class="hero-code" data-aos="fade-up">
+      <div class="code-bar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="code-title">Trigger a crawl in seconds</span>
+      </div>
+      <pre class="code-block"><code><span class="c-keyword">curl</span> <span class="c-flag">-X POST</span> http://localhost:8000/api/v1/crawls/ \
+  <span class="c-flag">-H</span> <span class="c-string">"Content-Type: application/json"</span> \
+  <span class="c-flag">-d</span> <span class="c-string">'{
+    "domain": "example.com",
+    "start_url": "https://example.com",
+    "max_depth": <span class="c-num">2</span>,
+    "max_pages": <span class="c-num">100</span>
+  }'</span>
+
+<span class="c-comment">// Response → 201 Created</span>
+<span class="c-string">{ "job_id": "3f8a1c2d-...", "status": "pending" }</span></code></pre>
+    </div>
+  </section>
+
+  <!-- ── Features ────────────────────────────────────────────────── -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Features</span>
+        <h2>Everything you need to<br/><span class="gradient-text">own your SEO data</span></h2>
+        <p>No SaaS dependency. No data leaving your servers. Full control.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card feature-large">
+          <div class="feature-icon">🕷️</div>
+          <h3>Playwright Crawler</h3>
+          <p>Full JavaScript rendering with Playwright. Crawls SPAs, handles redirects, respects robots.txt, and discovers pages from sitemaps.</p>
+          <div class="feature-tags">
+            <span>JS Rendering</span><span>robots.txt</span><span>Sitemaps</span><span>Depth control</span>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>12-Rule Audit Engine</h3>
+          <p>Scores every page 0–100. Detects missing titles, meta descriptions, H1 issues, Open Graph tags, canonical problems, and more.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>Regression Detection</h3>
+          <p>ClickHouse-powered time-series diffs. Know the moment an SEO score drops — down to the exact tag that changed.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Real-time Streaming</h3>
+          <p>WebSocket endpoint streams live crawl progress. Watch pages being audited as they happen.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔀</div>
+          <h3>Kafka Backbone</h3>
+          <p>Decoupled microservices over Apache Kafka. Scale crawler workers independently from the audit engine.</p>
+        </div>
+
+        <div class="feature-card feature-large">
+          <div class="feature-icon">🔌</div>
+          <h3>REST API First</h3>
+          <p>Every feature is an API call. Integrate with CI/CD pipelines, Slack bots, or custom dashboards. Full OpenAPI spec included.</p>
+          <div class="feature-tags">
+            <span>OpenAPI</span><span>WebSocket</span><span>CI/CD ready</span><span>Webhooks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How it works ────────────────────────────────────────────── -->
+  <section class="section section-dark" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">How it works</span>
+        <h2>From URL to insights<br/><span class="gradient-text">in milliseconds</span></h2>
+      </div>
+
+      <div class="pipeline">
+        <div class="pipeline-step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h4>Trigger Crawl</h4>
+            <p>POST a domain to the API. Job queued to Kafka instantly.</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h4>Playwright Crawl</h4>
+            <p>Workers consume Kafka jobs, render pages, extract all SEO tags.</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h4>Audit Engine</h4>
+            <p>12 rules score each page. Issues categorized by severity.</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h4>Store & Diff</h4>
+            <p>MongoDB stores full docs. ClickHouse diffs against history.</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-number">05</div>
+          <div class="step-content">
+            <h4>Alert & Act</h4>
+            <p>Query trends, regressions, and issues via REST or WebSocket.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture diagram -->
+      <div class="arch-diagram">
+        <div class="arch-box trigger">API / CI Trigger</div>
+        <div class="arch-arrow">▼</div>
+        <div class="arch-box kafka">Kafka: crawl.jobs</div>
+        <div class="arch-arrow">▼</div>
+        <div class="arch-box crawler">Playwright Crawler Workers</div>
+        <div class="arch-arrow">▼</div>
+        <div class="arch-box kafka">Kafka: crawl.raw_pages</div>
+        <div class="arch-arrow">▼</div>
+        <div class="arch-box audit">Audit Engine (Rule Scoring + Diff)</div>
+        <div class="arch-row">
+          <div class="arch-branch">
+            <div class="arch-arrow">▼</div>
+            <div class="arch-box mongo">MongoDB<br/><small>Full page docs</small></div>
+          </div>
+          <div class="arch-branch">
+            <div class="arch-arrow">▼</div>
+            <div class="arch-box ch">ClickHouse<br/><small>Time-series snapshots</small></div>
+          </div>
+          <div class="arch-branch">
+            <div class="arch-arrow">▼</div>
+            <div class="arch-box kafka">Kafka: audit.results</div>
+          </div>
+        </div>
+        <div class="arch-arrow">▼</div>
+        <div class="arch-box api-box">FastAPI + WebSocket</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Audit Rules ──────────────────────────────────────────────── -->
+  <section class="section" id="rules">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Audit Engine</span>
+        <h2>12 rules. One score.<br/><span class="gradient-text">Zero guesswork.</span></h2>
+        <p>Every page gets an SEO score from 0–100. Each issue deducts points based on severity.</p>
+      </div>
+
+      <div class="scoring-legend">
+        <div class="score-pill error">Error — 15 pts</div>
+        <div class="score-pill warning">Warning — 5 pts</div>
+        <div class="score-pill info">Info — 1 pt</div>
+      </div>
+
+      <div class="rules-grid">
+        <div class="rule-card">
+          <span class="rule-severity error">ERROR</span>
+          <span class="rule-name">title_exists</span>
+          <span class="rule-desc">Page missing &lt;title&gt; tag</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity warning">WARN</span>
+          <span class="rule-name">title_length</span>
+          <span class="rule-desc">Title &lt;30 or &gt;60 characters</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity error">ERROR</span>
+          <span class="rule-name">meta_description_exists</span>
+          <span class="rule-desc">Missing meta description</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity warning">WARN</span>
+          <span class="rule-name">meta_description_length</span>
+          <span class="rule-desc">Description &lt;70 or &gt;160 chars</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity warning">WARN</span>
+          <span class="rule-name">canonical_exists</span>
+          <span class="rule-desc">Missing canonical tag</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity error">ERROR</span>
+          <span class="rule-name">canonical_valid_url</span>
+          <span class="rule-desc">Canonical is not a valid absolute URL</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity error">ERROR</span>
+          <span class="rule-name">h1_exists</span>
+          <span class="rule-desc">Page missing H1 tag</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity warning">WARN</span>
+          <span class="rule-name">h1_multiple</span>
+          <span class="rule-desc">More than one H1 on the page</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity warning">WARN</span>
+          <span class="rule-name">og_title_exists</span>
+          <span class="rule-desc">Missing og:title Open Graph tag</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity warning">WARN</span>
+          <span class="rule-name">og_description_exists</span>
+          <span class="rule-desc">Missing og:description</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity warning">WARN</span>
+          <span class="rule-name">og_image_exists</span>
+          <span class="rule-desc">Missing og:image for social shares</span>
+        </div>
+        <div class="rule-card">
+          <span class="rule-severity info">INFO</span>
+          <span class="rule-name">robots_noindex</span>
+          <span class="rule-desc">Page has noindex directive</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stack ───────────────────────────────────────────────────── -->
+  <section class="section section-dark" id="stack">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Tech Stack</span>
+        <h2>Built on<br/><span class="gradient-text">battle-tested infrastructure</span></h2>
+      </div>
+
+      <div class="stack-grid">
+        <div class="stack-item">
+          <div class="stack-logo">🐍</div>
+          <div class="stack-name">Python + Playwright</div>
+          <div class="stack-role">Crawler</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-logo">⚡</div>
+          <div class="stack-name">FastAPI</div>
+          <div class="stack-role">REST + WebSocket API</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-logo">📨</div>
+          <div class="stack-name">Apache Kafka</div>
+          <div class="stack-role">Message Broker</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-logo">🍃</div>
+          <div class="stack-name">MongoDB 7</div>
+          <div class="stack-role">Primary Store</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-logo">📊</div>
+          <div class="stack-name">ClickHouse 24</div>
+          <div class="stack-role">Analytics Store</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-logo">🔴</div>
+          <div class="stack-name">Redis 7</div>
+          <div class="stack-role">Cache + Queue</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-logo">🐳</div>
+          <div class="stack-name">Docker Compose</div>
+          <div class="stack-role">Containers</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-logo">☸️</div>
+          <div class="stack-name">Kubernetes + KEDA</div>
+          <div class="stack-role">Orchestration</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── API Reference ───────────────────────────────────────────── -->
+  <section class="section" id="api">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">API Reference</span>
+        <h2>Simple REST API.<br/><span class="gradient-text">Powerful results.</span></h2>
+      </div>
+
+      <div class="api-table-wrap">
+        <table class="api-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="method post">POST</span></td>
+              <td><code>/api/v1/crawls/</code></td>
+              <td>Start a new crawl job</td>
+            </tr>
+            <tr>
+              <td><span class="method get">GET</span></td>
+              <td><code>/api/v1/crawls/{job_id}</code></td>
+              <td>Get crawl job status</td>
+            </tr>
+            <tr>
+              <td><span class="method get">GET</span></td>
+              <td><code>/api/v1/crawls/</code></td>
+              <td>List all crawl jobs</td>
+            </tr>
+            <tr>
+              <td><span class="method get">GET</span></td>
+              <td><code>/api/v1/pages/?job_id=...</code></td>
+              <td>List audited pages</td>
+            </tr>
+            <tr>
+              <td><span class="method get">GET</span></td>
+              <td><code>/api/v1/analytics/trends/{domain}</code></td>
+              <td>Time-series score trends</td>
+            </tr>
+            <tr>
+              <td><span class="method get">GET</span></td>
+              <td><code>/api/v1/analytics/issues/{job_id}</code></td>
+              <td>Issue breakdown by rule</td>
+            </tr>
+            <tr>
+              <td><span class="method get">GET</span></td>
+              <td><code>/api/v1/analytics/regressions/{domain}</code></td>
+              <td>Detected tag regressions</td>
+            </tr>
+            <tr>
+              <td><span class="method ws">WS</span></td>
+              <td><code>/ws/crawl/{job_id}</code></td>
+              <td>Live crawl progress stream</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="api-cta">
+        <a href="http://localhost:8000/docs" target="_blank" class="btn btn-primary btn-lg">
+          Open Interactive API Docs →
+        </a>
+        <a href="dashboard.html" class="btn btn-outline btn-lg">
+          Try the Dashboard
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ─────────────────────────────────────────────────────── -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-orb"></div>
+        <h2>Ready to audit your website?</h2>
+        <p>Your stack is running. Start your first crawl in 30 seconds.</p>
+        <a href="dashboard.html" class="btn btn-primary btn-xl">
+          Open Dashboard →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">SEO<strong>Pulse</strong></span>
+          <p>Advanced SEO tag analysis pipeline.<br/>Self-hosted. Open source.</p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h5>Product</h5>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#stack">Stack</a>
+            <a href="#api">API</a>
+          </div>
+          <div>
+            <h5>Tools</h5>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="http://localhost:8000/docs" target="_blank">API Docs</a>
+            <a href="http://localhost:8080" target="_blank">Kafka UI</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>SEOPulse — Built with Python, Kafka, ClickHouse & love.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

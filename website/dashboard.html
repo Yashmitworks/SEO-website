@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEOPulse — Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body class="dash-body">
+
+  <div class="bg-grid"></div>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <!-- ── Sidebar ─────────────────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">SEO<strong>Pulse</strong></span>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" data-view="crawl">
+        <span class="sl-icon">🚀</span> New Crawl
+      </a>
+      <a href="#" class="sidebar-link" data-view="jobs">
+        <span class="sl-icon">📋</span> Crawl Jobs
+      </a>
+      <a href="#" class="sidebar-link" data-view="pages">
+        <span class="sl-icon">📄</span> Pages
+      </a>
+      <a href="#" class="sidebar-link" data-view="analytics">
+        <span class="sl-icon">📈</span> Analytics
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="api-status-pill" id="sidebar-api-status">
+        <span class="status-dot"></span>
+        <span id="sidebar-status-text">Connecting...</span>
+      </div>
+      <a href="http://localhost:8000/docs" target="_blank" class="sidebar-docs-link">API Docs ↗</a>
+      <a href="http://localhost:8080" target="_blank" class="sidebar-docs-link">Kafka UI ↗</a>
+    </div>
+  </aside>
+
+  <!-- ── Main content ────────────────────────────────────────────── -->
+  <main class="dash-main">
+
+    <!-- Top bar -->
+    <header class="dash-header">
+      <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+      <div class="dash-header-title">
+        <h1 id="view-title">New Crawl</h1>
+        <p id="view-subtitle">Start a new SEO audit crawl</p>
+      </div>
+      <div class="dash-header-actions">
+        <div class="mini-status" id="mini-status">
+          <span class="status-dot green"></span>
+          <span id="mini-status-text">API Online</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── View: New Crawl ──────────────────────────────────────── -->
+    <div class="view active" id="view-crawl">
+      <div class="dash-grid">
+
+        <!-- Crawl form -->
+        <div class="dash-card crawl-form-card">
+          <div class="card-header">
+            <h3>🚀 Start a New Crawl</h3>
+            <p>Enter a domain and configure your crawl settings</p>
+          </div>
+
+          <form id="crawlForm" class="crawl-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Domain *</label>
+                <input type="text" id="f-domain" placeholder="example.com" required />
+              </div>
+              <div class="form-group">
+                <label>Start URL *</label>
+                <input type="url" id="f-starturl" placeholder="https://example.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Max Depth</label>
+                <input type="number" id="f-depth" value="2" min="1" max="10" />
+              </div>
+              <div class="form-group">
+                <label>Max Pages</label>
+                <input type="number" id="f-pages" value="100" min="1" max="500" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group form-check">
+                <input type="checkbox" id="f-robots" checked />
+                <label for="f-robots">Respect robots.txt</label>
+              </div>
+              <div class="form-group form-check">
+                <input type="checkbox" id="f-sitemap" />
+                <label for="f-sitemap">Use sitemap</label>
+              </div>
+            </div>
+            <div class="form-group" id="sitemap-url-group" style="display:none">
+              <label>Sitemap URL</label>
+              <input type="url" id="f-sitemapurl" placeholder="https://example.com/sitemap.xml" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="crawlSubmitBtn">
+              <span id="crawlBtnText">🚀 Start Crawl</span>
+              <span id="crawlBtnLoader" class="btn-loader" style="display:none">⏳ Launching...</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Live output -->
+        <div class="dash-card live-card">
+          <div class="card-header">
+            <h3>⚡ Live Output</h3>
+            <div class="live-indicator" id="liveIndicator">
+              <span class="live-dot"></span> Waiting...
+            </div>
+          </div>
+          <div class="live-log" id="liveLog">
+            <div class="log-placeholder">
+              <div class="log-icon">📡</div>
+              <p>Start a crawl to see live output here via WebSocket.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result card (shown after submit) -->
+        <div class="dash-card result-card" id="crawlResult" style="display:none">
+          <div class="card-header">
+            <h3>✅ Crawl Launched</h3>
+          </div>
+          <div class="result-content">
+            <div class="result-row">
+              <span class="result-label">Job ID</span>
+              <code id="res-jobid">—</code>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Domain</span>
+              <span id="res-domain">—</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Status</span>
+              <span class="status-badge pending" id="res-status">pending</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Created</span>
+              <span id="res-created">—</span>
+            </div>
+            <div class="result-actions">
+              <button class="btn btn-outline" onclick="switchView('jobs')">View All Jobs →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── View: Jobs ───────────────────────────────────────────── -->
+    <div class="view" id="view-jobs">
+      <div class="dash-card full-card">
+        <div class="card-header">
+          <h3>📋 Crawl Jobs</h3>
+          <div class="card-actions">
+            <input type="text" id="jobsDomainFilter" placeholder="Filter by domain..." class="filter-input" />
+            <button class="btn btn-outline btn-sm" onclick="loadJobs()">↻ Refresh</button>
+          </div>
+        </div>
+        <div id="jobsTableWrap">
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Loading jobs...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── View: Pages ──────────────────────────────────────────── -->
+    <div class="view" id="view-pages">
+      <div class="dash-card full-card">
+        <div class="card-header">
+          <h3>📄 Audited Pages</h3>
+          <div class="card-actions">
+            <input type="text" id="pagesJobFilter" placeholder="Enter Job ID..." class="filter-input" />
+            <button class="btn btn-primary btn-sm" onclick="loadPages()">Load Pages</button>
+          </div>
+        </div>
+        <div id="pagesTableWrap">
+          <div class="empty-state">
+            <div class="empty-icon">🔍</div>
+            <p>Enter a Job ID to load audited pages.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── View: Analytics ──────────────────────────────────────── -->
+    <div class="view" id="view-analytics">
+      <div class="dash-card full-card">
+        <div class="card-header">
+          <h3>📈 Analytics</h3>
+          <div class="card-actions">
+            <input type="text" id="analyticsDomain" placeholder="Enter domain..." class="filter-input" />
+            <button class="btn btn-primary btn-sm" onclick="loadAnalytics()">Analyze</button>
+          </div>
+        </div>
+
+        <div id="analyticsContent">
+          <div class="empty-state">
+            <div class="empty-icon">📊</div>
+            <p>Enter a domain to load analytics and regression data.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── Job detail modal ────────────────────────────────────────── -->
+  <div class="modal-overlay" id="modalOverlay" style="display:none">
+    <div class="modal" id="jobModal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Job Details</h3>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
