@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Complete Guide to Technical SEO Audits | SEOPulse</title>
+  <meta name="description" content="Learn how to perform a technical SEO audit, find metadata and crawlability issues, improve Core Web Vitals, and build a practical website SEO checklist.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://seo-website-website-r1csdop8j-yashmit-rathee.vercel.app/blog/technical-seo-audit/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Complete Guide to Technical SEO Audits">
+  <meta property="og:description" content="A practical guide to finding and fixing technical website SEO issues.">
+  <meta property="og:url" content="https://seo-website-website-r1csdop8j-yashmit-rathee.vercel.app/blog/technical-seo-audit/">
+  <meta property="og:image" content="https://seo-website-website-r1csdop8j-yashmit-rathee.vercel.app/blog/technical-seo-audit/og-cover.png">
+  <meta property="og:image:alt" content="SEOPulse guide to technical SEO audits">
+  <meta property="og:site_name" content="SEOPulse">
+  <meta property="article:section" content="Technical SEO">
+  <meta property="article:tag" content="Technical SEO">
+  <meta property="article:tag" content="SEO audit">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Complete Guide to Technical SEO Audits">
+  <meta name="twitter:description" content="Find and fix technical website SEO issues with this practical guide.">
+  <meta name="twitter:image" content="https://seo-website-website-r1csdop8j-yashmit-rathee.vercel.app/blog/technical-seo-audit/og-cover.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Complete Guide to Technical SEO Audits: How to Find and Fix Website SEO Issues",
+    "description": "A practical guide to crawling, metadata, canonical URLs, structured data, sitemaps, Core Web Vitals and technical SEO issue tracking.",
+    "image": "https://seo-website-website-r1csdop8j-yashmit-rathee.vercel.app/blog/technical-seo-audit/og-cover.png",
+    "author": {
+      "@type": "Organization",
+      "name": "SEOPulse"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SEOPulse",
+      "url": "https://seo-website-website-r1csdop8j-yashmit-rathee.vercel.app/"
+    },
+    "datePublished": "2026-11-24",
+    "dateModified": "2026-11-24",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://seo-website-website-r1csdop8j-yashmit-rathee.vercel.app/blog/technical-seo-audit/"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://seo-website-website-r1csdop8j-yashmit-rathee.vercel.app/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://seo-website-website-r1csdop8j-yashmit-rathee.vercel.app/blog/"},
+      {"@type": "ListItem", "position": 3, "name": "Technical SEO Audit Guide", "item": "https://seo-website-website-r1csdop8j-yashmit-rathee.vercel.app/blog/technical-seo-audit/"}
+    ]
+  }
+  </script>
+
+  <style>
+    .blog-page { position: relative; z-index: 1; padding-top: calc(var(--nav-h) + 42px); }
+    .blog-nav .nav-links a[aria-current="page"] { color: var(--neon); }
+    .blog-hero { max-width: 900px; margin: 0 auto; padding: 55px 24px 44px; text-align: center; }
+    .blog-kicker { display:inline-flex; gap:8px; align-items:center; color:var(--neon); background:rgba(99,102,241,.12); border:1px solid rgba(99,102,241,.25); border-radius:100px; padding:7px 15px; font-size:12px; font-weight:700; letter-spacing:.7px; text-transform:uppercase; }
+    .blog-hero h1 { margin:22px auto 18px; max-width:850px; font-size:clamp(36px,6vw,64px); line-height:1.12; letter-spacing:-2px; font-weight:900; }
+    .blog-deck { max-width:720px; margin:0 auto; color:var(--text2); font-size:18px; line-height:1.8; }
+    .blog-meta { display:flex; justify-content:center; align-items:center; gap:14px; flex-wrap:wrap; margin-top:24px; color:var(--text3); font-size:13px; }
+    .meta-dot { width:4px; height:4px; border-radius:50%; background:var(--accent3); }
+    .blog-layout { width:min(1160px, calc(100% - 48px)); margin:0 auto 100px; display:grid; grid-template-columns:minmax(0, 1fr) 270px; gap:34px; align-items:start; }
+    .article-card, .toc-card, .related-card { background:rgba(255,255,255,.035); border:1px solid var(--border); border-radius:var(--radius-lg); }
+    .article-card { padding:clamp(24px,4vw,48px); min-width:0; }
+    .article-content { max-width:760px; margin:0 auto; }
+    .article-content p { color:#c3ccda; line-height:1.9; margin:0 0 19px; font-size:15px; }
+    .article-content h2 { color:var(--text); font-size:clamp(23px,3vw,31px); line-height:1.25; letter-spacing:-.7px; margin:48px 0 16px; scroll-margin-top:100px; }
+    .article-content h3 { color:#e4e9f2; font-size:19px; margin:27px 0 10px; scroll-margin-top:100px; }
+    .article-content a { color:#a5b4fc; text-decoration:underline; text-decoration-color:rgba(165,180,252,.45); text-underline-offset:3px; }
+    .article-content a:hover { color:#c4b5fd; }
+    .article-content ul, .article-content ol { color:#c3ccda; padding-left:23px; margin:0 0 22px; }
+    .article-content li { padding-left:5px; margin:8px 0; line-height:1.8; }
+    .article-content strong { color:#f1f5f9; }
+    .article-content code { font-family:var(--mono); color:#c4b5fd; background:rgba(167,139,250,.1); border:1px solid rgba(167,139,250,.14); border-radius:5px; padding:2px 6px; font-size:.88em; }
+    .article-callout { margin:26px 0; padding:19px 21px; border:1px solid rgba(99,102,241,.28); border-left:3px solid var(--accent); border-radius:12px; background:rgba(99,102,241,.08); color:#dbe3f2; line-height:1.8; }
+    .article-checklist { list-style:none; padding:0 !important; }
+    .article-checklist li { position:relative; padding-left:28px; }
+    .article-checklist li::before { content:"✓"; position:absolute; left:0; color:#34d399; font-weight:800; }
+    .toc-column { position:sticky; top:88px; display:flex; flex-direction:column; gap:16px; }
+    .toc-card, .related-card { padding:22px; }
+    .toc-card h2, .related-card h2 { font-size:14px; letter-spacing:.3px; margin:0 0 14px; }
+    .toc-card ol { padding-left:18px; margin:0; color:var(--text3); }
+    .toc-card li { margin:9px 0; font-size:12px; line-height:1.5; }
+    .toc-card a { color:var(--text2); }
+    .toc-card a:hover { color:var(--neon); }
+    .related-card p { color:var(--text2); font-size:13px; line-height:1.7; margin-bottom:14px; }
+    .article-end { border-top:1px solid var(--border); margin-top:38px; padding-top:25px; }
+    .article-end p { color:var(--text3); font-size:13px; }
+    .blog-cta { margin-top:26px; padding:25px; border:1px solid rgba(99,102,241,.25); border-radius:16px; background:linear-gradient(135deg,rgba(99,102,241,.13),rgba(139,92,246,.08)); }
+    .blog-cta h2 { margin:0 0 9px; font-size:22px; }
+    .blog-cta p { margin-bottom:17px; }
+    .breadcrumb { width:min(1160px,calc(100% - 48px)); margin:0 auto; color:var(--text3); font-size:13px; }
+    .breadcrumb a { color:var(--text2); }
+    .breadcrumb a:hover { color:var(--neon); }
+    .breadcrumb span { margin:0 9px; color:var(--text3); }
+    .mobile-menu { display:none; }
+    @media(max-width:900px) {
+      .blog-layout { grid-template-columns:1fr; }
+      .toc-column { position:static; grid-row:1; }
+      .toc-card ol { columns:2; }
+    }
+    @media(max-width:700px) {
+      .blog-nav .nav-links, .blog-nav .nav-actions { display:none; }
+      .blog-nav .hamburger { display:flex; margin-left:auto; }
+      .blog-hero { padding-top:35px; }
+      .blog-layout { width:calc(100% - 28px); gap:18px; }
+      .article-card { padding:22px 18px; }
+      .toc-card ol { columns:1; }
+      .mobile-menu.open { display:flex; position:absolute; top:64px; left:0; right:0; padding:16px 24px 20px; flex-direction:column; gap:14px; background:rgba(8,11,20,.98); border-bottom:1px solid var(--border); }
+      .mobile-menu a { color:var(--text2); padding:5px 0; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-orb orb-1" aria-hidden="true"></div>
+  <div class="bg-orb orb-2" aria-hidden="true"></div>
+  <div class="bg-orb orb-3" aria-hidden="true"></div>
+
+  <nav class="navbar blog-nav" id="navbar" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="SEOPulse home">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">SEO<strong>Pulse</strong></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#how-it-works">How it works</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="/dashboard.html" class="btn btn-primary">Launch Dashboard →</a>
+      </div>
+      <button class="hamburger" id="blogHamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="blogMobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="blogMobileMenu">
+      <a href="/#features">Features</a>
+      <a href="/#how-it-works">How it works</a>
+      <a href="/blog/">Blog</a>
+      <a href="/dashboard.html">Launch Dashboard →</a>
+    </div>
+  </nav>
+
+  <main class="blog-page">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span>Technical SEO Audit Guide
+    </div>
+
+    <header class="blog-hero">
+      <span class="blog-kicker"><span class="badge-dot"></span> SEOPulse Insights · Technical SEO</span>
+      <h1>The Complete Guide to <span class="gradient-text">Technical SEO Audits</span></h1>
+      <p class="blog-deck">How to find and fix website SEO issues—from crawlability and metadata to structured data and Core Web Vitals.</p>
+      <div class="blog-meta">
+        <span>By SEOPulse</span><span class="meta-dot"></span>
+        <time datetime="2026-11-24">November 24, 2026</time><span class="meta-dot"></span>
+        <span>About 8–10 min read</span>
+      </div>
+    </header>
+
+    <div class="blog-layout">
+      <article class="article-card">
+        <div class="article-content">
+          <p>A website can look polished and still be difficult for search engines to understand. Important pages may be undiscovered, duplicate URLs may compete with one another, metadata may be missing, or slow resources may frustrate visitors. These problems are technical SEO issues: they affect how a site can be crawled, interpreted, indexed and experienced.</p>
+          <p>A <strong>technical SEO audit</strong> is a structured review of those foundations. It does not guarantee higher rankings, but it helps uncover barriers that can prevent useful content from being discovered or presented effectively in search. This guide explains a repeatable process that website owners and developers can use to inspect a site, prioritize problems and verify fixes.</p>
+
+          <div class="article-callout"><strong>In this guide:</strong> You will learn how to check crawlability, indexation, page metadata, canonical URLs, headings, structured data, sitemaps, internal links and page experience—and how to turn findings into a prioritized action list.</div>
+
+          <h2 id="why-audit">1. Why technical SEO audits matter</h2>
+          <p>Search engines need to access a page, understand its purpose and decide whether it should appear in search results. Technical problems can interrupt any part of that process. For example, a blocked resource can make a page difficult to render, an accidental <code>noindex</code> directive can keep a page out of search results, and inconsistent canonical tags can send mixed signals about duplicate or similar URLs.</p>
+          <p>Audits also help teams maintain quality as a website changes. New pages, redesigns, migrations and code releases can introduce broken links, redirect chains, missing metadata or changes to robots directives. Repeating a crawl after important releases makes it easier to catch regressions before they spread.</p>
+
+          <h2 id="crawlability">2. Check crawlability and indexability</h2>
+          <p>Start by checking whether search engine crawlers can reach the pages that matter. Review the site's <code>robots.txt</code> file and confirm that it does not unintentionally block important sections or resources. Remember that robots.txt controls crawling; it is not a reliable way to remove a URL that is already known to a search engine from its index.</p>
+          <p>Next, inspect important pages for indexing directives. Look for a <code>noindex</code> meta tag or an <code>X-Robots-Tag</code> HTTP header. These directives may be appropriate for private, duplicate or utility pages, but they should not appear accidentally on pages intended to rank.</p>
+          <p>Use Google Search Console's URL Inspection tool to check how Google sees a representative URL. Compare the user-declared canonical with Google's selected canonical when that information is available. A successful live test does not automatically mean a page is indexed, so review the reported indexing state as well.</p>
+
+          <h2 id="metadata">3. Review titles and meta descriptions</h2>
+          <p>Each important page should have a descriptive, distinctive HTML title. The title helps communicate the page's subject to users and search engines. Avoid repeating the same generic title across every route, stuffing keywords, or writing a title that promises content the page does not provide.</p>
+          <p>Write a useful meta description for each key page. A description should summarize the page accurately and give searchers a reason to visit. Search engines may generate a different snippet for a query, so a meta description is not a guarantee that the exact text will appear in results. It is still a useful way to provide a concise page summary.</p>
+          <p>During a crawl, export pages with missing titles, duplicate titles, missing descriptions and unusually short or long values. Review the affected URLs manually before changing them; similar pages sometimes need intentionally similar wording, but each page should still communicate its own purpose.</p>
+
+          <h2 id="headings">4. Organize headings and page content</h2>
+          <p>Headings create a readable outline for people and help clarify how sections relate to the page's main topic. Give each page a clear primary heading and organize major sections with descriptive subheadings. Use heading levels in a logical order rather than choosing a heading because of its default visual size.</p>
+          <p>Check that the main heading matches the visible page content. A page with no clear topic, repeated headings copied across routes, or headings that do not describe the following section can be confusing. Also make sure essential information is available in crawlable HTML and is not hidden behind interactions that prevent users or crawlers from accessing it.</p>
+
+          <h2 id="canonical">5. Validate canonical URLs and redirects</h2>
+          <p>Canonical tags help indicate the preferred URL when multiple URLs contain duplicate or substantially similar content. A canonical should normally be an absolute URL and should point to the intended preferred version of the page. Avoid canonicalizing every page to the homepage; that can send an incorrect signal about distinct content.</p>
+          <p>Check common URL variations, including HTTP versus HTTPS, www versus non-www, trailing slashes and query parameters. Decide which version should be canonical and configure redirects consistently where appropriate. A redirect should lead users and crawlers to the relevant destination, not to an unrelated page or a long chain of intermediate URLs.</p>
+
+          <h2 id="structured-data">6. Add structured data where it fits</h2>
+          <p>Structured data is machine-readable information that describes the content of a page. For an organization, suitable Organization markup can describe the business or project. For a genuine editorial article, Article markup can identify the headline, author, publication date and main image. BreadcrumbList markup can describe a page's position in the site hierarchy.</p>
+          <p>Only add properties that accurately describe visible, real information. Do not mark up content that users cannot see or invent ratings, reviews, authors or publication details. Validate supported markup with Google's Rich Results Test and inspect warnings as well as errors. Valid structured data makes a page eligible for certain search features; it does not guarantee that Google will show them.</p>
+
+          <h2 id="sitemap">7. Maintain an XML sitemap and internal links</h2>
+          <p>An XML sitemap lists canonical URLs that a site owner wants search engines to discover. Include important, indexable pages and keep the sitemap updated when content changes. Exclude redirected URLs, error pages and URLs marked noindex. Submit the sitemap in Google Search Console and review whether Google can fetch it successfully.</p>
+          <p>Internal links help visitors move between related pages and help crawlers discover content. Link from relevant, useful context rather than adding links simply to repeat keywords. Check for broken internal links, orphan pages with no meaningful internal links, and navigation paths that make important content difficult to reach.</p>
+
+          <h2 id="performance">8. Measure mobile performance and Core Web Vitals</h2>
+          <p>Page experience matters to visitors, particularly on mobile devices and slower connections. Google's Core Web Vitals focus on loading performance, interactivity and visual stability. The current metrics are Largest Contentful Paint (LCP), Interaction to Next Paint (INP) and Cumulative Layout Shift (CLS).</p>
+          <ul>
+            <li><strong>LCP:</strong> measures when the largest visible content element is rendered. Large hero images, slow server responses and render-blocking resources can contribute to poor results.</li>
+            <li><strong>INP:</strong> measures responsiveness across interactions. Heavy JavaScript and long main-thread tasks can make a page feel slow to respond.</li>
+            <li><strong>CLS:</strong> measures unexpected layout movement. Reserve space for images, embeds and other elements that load after the initial render.</li>
+          </ul>
+          <p>Use PageSpeed Insights to review lab diagnostics and, when available, real-user field data. Test important page templates on mobile and desktop. Compress images, use modern formats where appropriate, reduce unnecessary JavaScript and avoid loading resources that the page does not need. Re-test after each meaningful change instead of assuming an optimization improved the result.</p>
+
+          <h2 id="social-tags">9. Check Open Graph and social sharing metadata</h2>
+          <p>Open Graph tags describe how a page should appear when shared on social platforms and messaging apps. At minimum, review <code>og:title</code>, <code>og:description</code>, <code>og:type</code>, <code>og:url</code> and <code>og:image</code>. Use a relevant image that is publicly accessible and large enough for the intended sharing preview.</p>
+          <p>Keep social titles and descriptions consistent with the actual page. A broken image URL, an image blocked from public access or metadata copied from another page can produce an incorrect preview. Test the final public URL after deployment, because local development paths will not work for social crawlers.</p>
+
+          <h2 id="audit-workflow">10. Turn audit findings into a practical workflow</h2>
+          <p>A useful audit is more than a long export of warnings. Convert findings into tasks that identify the affected URLs, the evidence, the likely impact and the owner responsible for the fix. Prioritize issues that prevent important pages from being crawled or indexed, then address site-wide metadata and internal-link problems, followed by performance and refinement opportunities.</p>
+          <ol>
+            <li><strong>Establish a baseline:</strong> record the date, crawl settings, tested URLs and current performance measurements.</li>
+            <li><strong>Group issues:</strong> separate crawlability, indexation, metadata, links, structured data and performance findings.</li>
+            <li><strong>Prioritize:</strong> consider the number and importance of affected pages, not just the number of warnings.</li>
+            <li><strong>Fix and document:</strong> make one set of changes at a time and note what was changed.</li>
+            <li><strong>Re-crawl and re-test:</strong> use the same settings where possible to compare results fairly.</li>
+          </ol>
+          <div class="article-callout"><strong>Practical checklist:</strong>
+            <ul class="article-checklist">
+              <li>Important pages return the expected HTTP status.</li>
+              <li>Robots directives do not block pages that should be indexed.</li>
+              <li>Titles, descriptions and H1 headings are present and relevant.</li>
+              <li>Canonical URLs point to the intended preferred versions.</li>
+              <li>Internal links work and important pages are discoverable.</li>
+              <li>Sitemap entries are canonical and indexable.</li>
+              <li>Structured data matches visible page content.</li>
+              <li>Mobile performance has been measured and reviewed.</li>
+            </ul>
+          </div>
+
+          <h2 id="seopulse">11. How SEOPulse supports technical SEO monitoring</h2>
+          <p>SEOPulse is designed around the idea that technical SEO checks should be repeatable. Its project workflow brings crawling, page-level checks and issue review into one place. The website describes a Playwright-based crawler, a 12-rule audit engine, regression detection and a REST API-oriented architecture.</p>
+          <p>For teams maintaining websites over time, repeatable crawls can help identify whether a previously fixed issue has returned or whether a release has changed important page tags. A structured issue list also makes it easier to move from discovery to action: identify the affected page, inspect the underlying HTML, correct the implementation and run the audit again.</p>
+          <p>Explore the <a href="/">SEOPulse homepage</a> to learn about the platform, or open the <a href="/dashboard.html">SEOPulse dashboard</a> to see the project's interface. The capabilities available in a live deployment depend on the connected backend services and current configuration.</p>
+
+          <h2 id="conclusion">Conclusion</h2>
+          <p>Technical SEO is an ongoing maintenance process, not a one-time checklist. A well-run audit checks whether important pages can be discovered, understood and used; documents issues with enough detail to act on them; and verifies that fixes work after deployment. Start with the pages that matter most, use reliable measurements, and repeat the process after significant site changes.</p>
+          <p>For further guidance, read Google's <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer">SEO Starter Guide</a>. You can also explore <a href="https://seonalabs.com" target="_blank" rel="noopener noreferrer">SEO analysis resources at SEONALabs</a> as an additional industry reference.</p>
+
+          <div class="blog-cta">
+            <h2>Make technical SEO checks repeatable</h2>
+            <p>Explore SEOPulse's approach to crawling, auditing and monitoring website SEO tags.</p>
+            <a href="/dashboard.html" class="btn btn-primary">Explore SEOPulse Dashboard →</a>
+          </div>
+
+          <div class="article-end">
+            <p>Published by SEOPulse · Technical SEO educational guide. Always validate changes on your own website and consult current search engine documentation when implementing directives or structured data.</p>
+          </div>
+        </div>
+      </article>
+
+      <aside class="toc-column" aria-label="Article navigation">
+        <nav class="toc-card" aria-label="Table of contents">
+          <h2>ON THIS PAGE</h2>
+          <ol>
+            <li><a href="#why-audit">Why audits matter</a></li>
+            <li><a href="#crawlability">Crawlability and indexability</a></li>
+            <li><a href="#metadata">Titles and descriptions</a></li>
+            <li><a href="#headings">Heading structure</a></li>
+            <li><a href="#canonical">Canonicals and redirects</a></li>
+            <li><a href="#structured-data">Structured data</a></li>
+            <li><a href="#sitemap">Sitemaps and internal links</a></li>
+            <li><a href="#performance">Core Web Vitals</a></li>
+            <li><a href="#social-tags">Open Graph tags</a></li>
+            <li><a href="#audit-workflow">Audit workflow</a></li>
+            <li><a href="#seopulse">How SEOPulse helps</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+          </ol>
+        </nav>
+        <div class="related-card">
+          <h2>ABOUT SEOPULSE</h2>
+          <p>A technical SEO auditing project focused on crawling pages, checking important SEO tags and tracking issues over time.</p>
+          <a href="/" class="btn btn-outline btn-sm">Visit Homepage →</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">SEO<strong>Pulse</strong></span>
+          <p>Advanced SEO tag analysis pipeline.<br>Self-hosted. Open source.</p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h5>Product</h5>
+            <a href="/#features">Features</a>
+            <a href="/#how-it-works">How it works</a>
+            <a href="/dashboard.html">Dashboard</a>
+          </div>
+          <div>
+            <h5>Resources</h5>
+            <a href="/blog/">Blog</a>
+            <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer">Google SEO Guide</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>SEOPulse — Crawl. Audit. Dominate.</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+    const menuButton = document.getElementById("blogHamburger");
+    const mobileMenu = document.getElementById("blogMobileMenu");
+
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 20);
+    }, { passive: true });
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+  </script>
+</body>
+</html>
